@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.IOException;
 
 import okhttp3.*;
+import org.json.JSONObject;
 
 public class PostExample {
     private static final MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
@@ -9,12 +10,16 @@ public class PostExample {
     private final OkHttpClient client = new OkHttpClient();
 
     public void run() throws Exception {
-        String jsonPayload = "{\"username\":\"faisal\",\"call_time\":\"40\"}";
+        String phone_number = "+8801911833792";
+        String call_time = "10:30 PM";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("phone_number", phone_number);
+        jsonObject.put("call_time", call_time);
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("jsonPayload", jsonPayload)
+                .addFormDataPart("jsonPayload", jsonObject.toString())
                 .addFormDataPart("files", "logo-square.png",
-                        RequestBody.create(MEDIA_TYPE_PNG, new File("/Users/faisalahmed/Desktop/Faisal_Ahmed.jpeg")))
+                        RequestBody.create(MEDIA_TYPE_PNG, new File("/Users/faisalahmed/Desktop/shop.png")))
                 .build();
 
         Request request = new Request.Builder()
