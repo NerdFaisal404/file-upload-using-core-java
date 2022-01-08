@@ -20,9 +20,9 @@ public class CurlRequest {
             System.out.println(IOUtils.toString(in, "UTF-8"));
             String cookieValue = IOUtils.toString(in, "UTF-8");
 
-            URL url = new URL("https://portal.proxyguys.com/api/v2/proxies/availability");
+            URL url = new URL("https://portal.proxyguys.com/api/v2/proxies/connect/geneakin_5bb/San Diego, CA");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("GET");
+            con.setRequestMethod("POST");
             con.setRequestProperty("Cookie",
                     "session=79558b8e-6a52-4e83-a3f7-180c3d8539c1.kvU1QsFYV3aZo1zoZdhYH1vShzE");
             int status = con.getResponseCode();
